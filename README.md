@@ -1,4 +1,8 @@
-# Example code for article submission
+# Supporting code for paper publication
+
+Entropy regularized reinforcement learning using large deviation theory\
+A. Arriojas,  J. Adamczyk, S. Tiomkin and R. Kulkarni\
+Accepted for publication: April 1, 2023
 
 ## Setup
 ```
