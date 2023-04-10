@@ -8,7 +8,7 @@ Accepted for publication: April 1, 2023
 
 It is recommended to use a python environment manager like Miniconda or PyEnv. Below is an example of how to use the conda command to setup a new environment. The code in this repository requires python 3.8 or greater. It has been tested with python 3.11.
 
-To install miniconda, go to [this link](https://conda.io/projects/conda/en/stable/user-guide/install/index.html) and open instructions for your OS.
+To install miniconda, go to [this link](https://conda.io/projects/conda/en/stable/user-guide/install/index.html) and follow instructions for your OS.
 
 To create a new environment with conda, you may run the following command:
 ```
