@@ -317,10 +317,11 @@ def make_figure_7(beta_list = [1, 5, 10, 50, 100], alpha = 0.01, episode_length 
     pbar = tqdm(range(n_episodes), ncols=120)
     for i in pbar:
         # keep SARSA structure
-        state, done = env.reset(), False
+        state = env.reset()
+        done = truncated = False
         action = np.random.choice(env.nA, p=prior_policy[state])
-        while not done:
-            next_state, reward, done, _ = env.step(action)
+        while not (done or truncated):
+            next_state, reward, done, truncated, _ = env.step(action)
             next_action = np.random.choice(env.nA, p=prior_policy[next_state])
             replay_memory.append((state, action, reward, next_state, next_action))
             state, action = next_state, next_action
@@ -435,11 +436,12 @@ def make_figure_8(beta = 10, n_replicas = 3, n_episodes = 2_000):
             pbar = tqdm(pbar, ncols=120)
         for _ in pbar:
             # keep SARSA structure
-            state, done = env.reset(), False
+            state = env.reset()
+            done = truncated = False
             action = rng.choice(env.nA, p=prior_policy[state])
-            while not done:
+            while not (done or truncated):
                 state_freq[state] += 1
-                next_state, reward, done, _ = env.step(action)
+                next_state, reward, done, truncated, _ = env.step(action)
                 next_action = rng.choice(env.nA, p=prior_policy[next_state])
                 exp_re = np.exp(reward * beta)
 

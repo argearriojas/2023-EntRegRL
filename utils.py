@@ -264,14 +264,14 @@ def test_policy(env, policy, quiet=True, rng=None):
 
     state = env.reset()
 
-    done = False
+    done = truncated = False
     episode_reward = 0
-    while not done:
+    while not (done or truncated):
         # Sample action from action probability distribution
         action = random_choice(env.action_space.n, p=policy[state])
 
         # Apply the sampled action in our environment
-        state, reward, done, _ = env.step(action)
+        state, reward, done, truncated, _ = env.step(action)
         episode_reward += reward
 
     if not quiet:
